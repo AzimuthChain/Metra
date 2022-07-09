@@ -10,7 +10,7 @@ Metra is the Official Golang implementation of the MetraChain protocol. It is a 
 ![contributors](https://img.shields.io/github/contributors-anon/metrachain/metra)
 ![size](https://img.shields.io/github/languages/code-size/metrachain/metra)
 ![lines](https://img.shields.io/tokei/lines/github/metrachain/metra)
-[![Discord](https://img.shields.io/discord/714888181740339261?color=1C1CE1&label=Polygon%20%7C%20Discord%20%F0%9F%91%8B%20&style=flat-square)](https://discord.gg/zdwkdvMNY2)
+[![Reddit](https://img.shields.io/discord/714888181740339261?color=1C1CE1&label=Metra%20%7C%20Discord%20%F0%9F%91%8B%20&style=flat-square)](https://reddit.com/r/metrachain)
 [![Twitter Follow](https://img.shields.io/twitter/follow/MetraChain.svg?style=social)](https://twitter.com/MetraChain)
 
 ## How to contribute
@@ -131,6 +131,6 @@ included in our repository in the `COPYING` file.
 
 <hr style="margin-top: 3em; margin-bottom: 3em;">
 
-## Join our Discord server
+## Join our Reddit Channel
 
 Join Metra community  – share your ideas or just say hi over [on Reddit](https://reddit.com/r/metrachain).
