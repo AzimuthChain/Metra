@@ -54,7 +54,7 @@ func (c *ChainSetHeadCommand) Run(args []string) int {
 		return 1
 	}
 
-	metraClt, err := c.BorConn()
+	metraClt, err := c.MetraConn()
 	if err != nil {
 		c.UI.Error(err.Error())
 		return 1
