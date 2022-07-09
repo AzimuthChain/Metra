@@ -237,8 +237,8 @@ func ethFilter(args []string) (nodeFilter, error) {
 		filter = forkid.NewStaticFilter(params.RopstenChainConfig, params.RopstenGenesisHash)
 	case "bor-mumbai":
 		filter = forkid.NewStaticFilter(params.MumbaiChainConfig, params.MumbaiGenesisHash)
-	case "bor-mainnet":
-		filter = forkid.NewStaticFilter(params.BorMainnetChainConfig, params.BorMainnetGenesisHash)
+	case "metra-mainnet":
+		filter = forkid.NewStaticFilter(params.MetraMainnetChainConfig, params.MetraMainnetGenesisHash)
 	case "sepolia":
 		filter = forkid.NewStaticFilter(params.SepoliaChainConfig, params.SepoliaGenesisHash)
 	default:
