@@ -157,7 +157,7 @@ func (s *Server) Status(ctx context.Context, _ *empty.Empty) (*proto.StatusRespo
 			HighestBlock:  int64(syncProgress.HighestBlock),
 			CurrentBlock:  int64(syncProgress.CurrentBlock),
 		},
-		Forks: gatherForks(s.config.chain.Genesis.Config, s.config.chain.Genesis.Config.Metra),
+		Forks: gatherForks(s.config.chain.Genesis.Config, s.config.chain.Genesis.Config.Bor),
 	}
 	return resp, nil
 }
