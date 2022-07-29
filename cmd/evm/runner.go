@@ -216,6 +216,10 @@ func runCmd(ctx *cli.Context) error {
 			Debug:  ctx.GlobalBool(DebugFlag.Name) || ctx.GlobalBool(MachineFlag.Name),
 		},
 	}
+        
+        if runtimeConfig.EVMConfig.EVMInterpreter != "" {
+		vm.InitEVMCEVM(runtimeConfig.EVMConfig.EVMInterpreter)
+	}
 
 	if cpuProfilePath := ctx.GlobalString(CPUProfileFlag.Name); cpuProfilePath != "" {
 		f, err := os.Create(cpuProfilePath)
