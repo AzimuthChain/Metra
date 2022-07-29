@@ -21,6 +21,8 @@ import (
 	"sync/atomic"
 	"time"
 
+        "github.com/ethereum/evmc/bindings/go/evmc"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/params"
@@ -133,8 +135,22 @@ func NewEVM(blockCtx BlockContext, txCtx TxContext, statedb StateDB, chainConfig
 		Config:      config,
 		chainConfig: chainConfig,
 		chainRules:  chainConfig.Rules(blockCtx.BlockNumber, blockCtx.Random != nil),
+                interpreters: make([]Interpreter, 0, 2),
 	}
-	evm.interpreter = NewEVMInterpreter(evm, config)
+                if vmConfig.EWASMInterpreter != "" {
+			evm.interpreters = append(evm.interpreters, &EVMC{ewasmModule, evm, evmc.CapabilityEWASM, false})
+		} else {
+			panic("The default ewasm interpreter not supported yet.")
+		}
+	}
+
+	if vmConfig.EVMInterpreter != "" {
+		evm.interpreters = append(evm.interpreters, &EVMC{evmModule, evm, evmc.CapabilityEVM1, false})
+	} else {
+		evm.interpreters = append(evm.interpreters, NewEVMInterpreter(evm, vmConfig))
+	}
+
+	evm.interpreter = evm.interpreters[0]
 	return evm
 }
 
@@ -453,8 +469,9 @@ func (evm *EVM) create(caller ContractRef, codeAndHash *codeAndHash, gas uint64,
 	ret, err := evm.interpreter.Run(contract, nil, false)
 
 	// Check whether the max code size has been exceeded, assign err if the case.
-	if err == nil && evm.chainRules.IsEIP158 && len(ret) > params.MaxCodeSize {
-		err = ErrMaxCodeSizeExceeded
+	//if err == nil && evm.chainRules.IsEIP158 && len(ret) > params.MaxCodeSize {
+		//err = ErrMaxCodeSizeExceeded
+        maxCodeSizeExceeded := false
 	}
 
 	// Reject code starting with 0xEF if EIP-3541 is enabled.
