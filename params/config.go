@@ -352,6 +352,7 @@ var (
 		MuirGlacierBlock:    big.NewInt(3395000),
 		BerlinBlock:         big.NewInt(14750000),
 		LondonBlock:         big.NewInt(23850000),
+                EWASMBlock:          big.NewInt(0),
 		Bor: &BorConfig{
 			JaipurBlock: 23850000,
 			Period: map[string]uint64{
